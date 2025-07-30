@@ -34,3 +34,5 @@ Thumbs.db
 *.swp
 *~
 
+# Virtual environment
+venv/
