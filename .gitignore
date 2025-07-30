@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+*.log
+
+# Flask uploads and generated results
+backend/uploads/
+backend/results/
+
+# R
+*.RData
+*.Rhistory
+*.Rproj
+.Rproj.user/
+
+# React Node.js
+node_modules/
+frontend/node_modules/
+*.env
+.env.*
+
+# System
+.DS_Store
+Thumbs.db
+
+# VS Code settings (optional)
+.vscode/
+
+# Mac/Linux backup files
+*.swp
+*~
+
