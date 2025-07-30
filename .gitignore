@@ -38,4 +38,4 @@ Thumbs.db
 venv/
 
 # MacOS specific
-.DS_Store
+*.DS_Store
