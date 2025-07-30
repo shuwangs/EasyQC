@@ -9,10 +9,9 @@
 - /: test if Flask can successfully run 
 - /upload: provide csv file and normalization paramters in 
 
-### Step 2: Achieve the /upload Routes logic 
-- receive the CSV file
-- read normalization parameters
-- save the file to uploads/
-- return a simple Json response. 
-  
-  
+### Add /upload route to Flask backend
+
+- Supports file upload with CSV/validation
+- Accepts normalization method (tic etc.)
+- Saves file with UUID and returns JSON response
+
