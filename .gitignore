@@ -36,3 +36,6 @@ Thumbs.db
 
 # Virtual environment
 venv/
+
+# MacOS specific
+.DS_Store
