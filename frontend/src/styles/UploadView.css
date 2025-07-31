@@ -1,0 +1,39 @@
+.upload-grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
+  padding: 30px;
+  align-items: start;
+}
+
+.upload-panel {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #fafafa;
+}
+
+.results-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.image-wide {
+  width: 100%;
+  height: auto;
+  background-color: #b2f0f0;
+  text-align: center;
+}
+
+.pca-row {
+  display: flex;
+  gap: 10px;
+}
+
+.pca-row img {
+  flex: 1;
+  border: 1px solid #999;
+  padding: 5px;
+  background-color: white;
+}

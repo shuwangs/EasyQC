@@ -15,3 +15,10 @@
 - Accepts normalization method (tic etc.)
 - Saves file with UUID and returns JSON response
 
+
+### Step3 start the frontend 
+- upload the .txt file and save it to the backend /upload
+- select normalization method - dropdown
+- show the result visualization 
+
+
