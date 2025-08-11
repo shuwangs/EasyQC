@@ -6,8 +6,8 @@ app = Flask(__name__)
 
 # Configure the dir for the later use
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-UPLOAD_FOLDER = os.path.abspath(os.path.join(BASE_DIR, "uploads"))
-RESULT_FOLDER = os.path.abspath(os.path.join(BASE_DIR, "results"))
+UPLOAD_FOLDER = os.path.join(os.getcwd(), 'uploads')
+RESULT_FOLDER = os.path.join(os.getcwd(), 'results')
 os.makedirs(UPLOAD_FOLDER, exist_ok = True)
 os.makedirs(RESULT_FOLDER, exist_ok = True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
