@@ -16,7 +16,7 @@ area  <- readr::read_delim(input_file, delim = "\t", na = c("NA", "N/A"))
 internal_standards <- c("dbq_pos_1_is", "x4_nitrobenzoic_acid_neg_1_is", "x4_nitrobenzoic_acid_neg_2_is")
 name_hash <- tibble(name = colnames(area), clean_name = colnames(area |> janitor::clean_names()))
 
-fedf <- area |>
+df <- area |>
   clean_names() |>
   dplyr::mutate(sample_type = case_when(
     grepl("Blank|blank", sample_id) ~ "Blank",
