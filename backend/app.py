@@ -15,7 +15,7 @@ app.config['RESULT_FOLDER'] = RESULT_FOLDER
 
 
 ALLOWED_NORMALIZATIONS = ['tic', 'is', 'qc', 'pqn', 'is+qc', 'is+pqn', 'none']
-
+DATA_TYPE = ["proteomics", "metabolomics", "lipidomics"]
 @app.route('/')
 def index():
     return "Welcome to EasyQC! Please upload your CSV file for data quality checks."
@@ -32,6 +32,11 @@ def upload_file():
     normalization = request.form.get('normalization', "none").lower()
     if normalization not in ALLOWED_NORMALIZATIONS:
         return jsonify({'Error': f'Invalid normalization method: {normalization}'}), 400
+    
+    # data type check
+    data_type = request.form.get('data_type', "metabolomics").lower()
+    if data_type not in DATA_TYPE:
+        return jsonify({'Error': f'Invalid data type: {data_type}'}), 400
 
     # Check if the file is a txt file
     if file and file.filename.lower().endswith('.txt'):
