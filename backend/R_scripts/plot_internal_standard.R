@@ -13,11 +13,17 @@ output_dir <- args[4]
 area  <- readr::read_delim(input_file, delim = "\t", na = c("NA", "N/A"))
 
 # Identify clean column names
-internal_standards <- c("dbq_pos_1_is", "x4_nitrobenzoic_acid_neg_1_is", "x4_nitrobenzoic_acid_neg_2_is")
+if (data_type == "metabolomics") {
+    internal_standards <- c("ce_22_6_is", "x4_nitrobenzoic_acid_neg_1_is", "x4_nitrobenzoic_acid_neg_2_is")
+
+} else if (data_type == "lipidomics") {
+    internal_standards <- grepl("is", colnames(area |> janitor::clean_names()))
+}
+
 name_hash <- tibble(name = colnames(area), clean_name = colnames(area |> janitor::clean_names()))
 
 df <- area |>
-  clean_names() |>
+  janitor::clean_names() |>
   dplyr::mutate(sample_type = case_when(
     grepl("Blank|blank", sample_id) ~ "Blank",
     grepl("Pooled QC_Batch\\d+", sample_id) ~ str_extract(sample_id, "Pooled QC_Batch\\d+"),
@@ -34,6 +40,11 @@ if (!dir.exists(outfolder)) {
 }
 
 for (feature in internal_standards) {
+    if (!(feature %in% colnames(df))) {
+    message(paste("⚠️ Feature not found in data:", feature))
+    next
+  }
+
   max_value <- max(df[[feature]], na.rm = TRUE)
 
   gg_plot <- ggplot(df, aes(x = sample_id, y = !!sym(feature), colour = sample_type)) +
